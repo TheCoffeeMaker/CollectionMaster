@@ -7,10 +7,10 @@ const port = 4000;
 function get_models() {
   const Sequelize = require("sequelize");
   const initModels = require("./models/init-models").initModels;
-  var sequelize = new Sequelize("northwind", "root", "root", {
+  const sequelize = new Sequelize("northwind", "root", "root", {
     dialect: "mysql",
   });
-  var models = initModels(sequelize);
+  const models = initModels(sequelize);
   return models;
 }
 

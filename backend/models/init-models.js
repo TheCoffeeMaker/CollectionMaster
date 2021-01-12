@@ -1,49 +1,49 @@
-var DataTypes = require("sequelize").DataTypes;
-var _customers = require("./customers");
-var _employee_privileges = require("./employee_privileges");
-var _employees = require("./employees");
-var _inventory_transaction_types = require("./inventory_transaction_types");
-var _inventory_transactions = require("./inventory_transactions");
-var _invoices = require("./invoices");
-var _order_details = require("./order_details");
-var _order_details_status = require("./order_details_status");
-var _orders = require("./orders");
-var _orders_status = require("./orders_status");
-var _orders_tax_status = require("./orders_tax_status");
-var _privileges = require("./privileges");
-var _products = require("./products");
-var _purchase_order_details = require("./purchase_order_details");
-var _purchase_order_status = require("./purchase_order_status");
-var _purchase_orders = require("./purchase_orders");
-var _sales_reports = require("./sales_reports");
-var _shippers = require("./shippers");
-var _strings = require("./strings");
-var _suppliers = require("./suppliers");
+const DataTypes = require("sequelize").DataTypes;
+const _customers = require("./customers");
+const _employee_privileges = require("./employee_privileges");
+const _employees = require("./employees");
+const _inventory_transaction_types = require("./inventory_transaction_types");
+const _inventory_transactions = require("./inventory_transactions");
+const _invoices = require("./invoices");
+const _order_details = require("./order_details");
+const _order_details_status = require("./order_details_status");
+const _orders = require("./orders");
+const _orders_status = require("./orders_status");
+const _orders_tax_status = require("./orders_tax_status");
+const _privileges = require("./privileges");
+const _products = require("./products");
+const _purchase_order_details = require("./purchase_order_details");
+const _purchase_order_status = require("./purchase_order_status");
+const _purchase_orders = require("./purchase_orders");
+const _sales_reports = require("./sales_reports");
+const _shippers = require("./shippers");
+const _strings = require("./strings");
+const _suppliers = require("./suppliers");
 
 function initModels(sequelize) {
-  var customers = _customers(sequelize, DataTypes);
-  var employee_privileges = _employee_privileges(sequelize, DataTypes);
-  var employees = _employees(sequelize, DataTypes);
-  var inventory_transaction_types = _inventory_transaction_types(
+  const customers = _customers(sequelize, DataTypes);
+  const employee_privileges = _employee_privileges(sequelize, DataTypes);
+  const employees = _employees(sequelize, DataTypes);
+  const inventory_transaction_types = _inventory_transaction_types(
     sequelize,
     DataTypes
   );
-  var inventory_transactions = _inventory_transactions(sequelize, DataTypes);
-  var invoices = _invoices(sequelize, DataTypes);
-  var order_details = _order_details(sequelize, DataTypes);
-  var order_details_status = _order_details_status(sequelize, DataTypes);
-  var orders = _orders(sequelize, DataTypes);
-  var orders_status = _orders_status(sequelize, DataTypes);
-  var orders_tax_status = _orders_tax_status(sequelize, DataTypes);
-  var privileges = _privileges(sequelize, DataTypes);
-  var products = _products(sequelize, DataTypes);
-  var purchase_order_details = _purchase_order_details(sequelize, DataTypes);
-  var purchase_order_status = _purchase_order_status(sequelize, DataTypes);
-  var purchase_orders = _purchase_orders(sequelize, DataTypes);
-  var sales_reports = _sales_reports(sequelize, DataTypes);
-  var shippers = _shippers(sequelize, DataTypes);
-  var strings = _strings(sequelize, DataTypes);
-  var suppliers = _suppliers(sequelize, DataTypes);
+  const inventory_transactions = _inventory_transactions(sequelize, DataTypes);
+  const invoices = _invoices(sequelize, DataTypes);
+  const order_details = _order_details(sequelize, DataTypes);
+  const order_details_status = _order_details_status(sequelize, DataTypes);
+  const orders = _orders(sequelize, DataTypes);
+  const orders_status = _orders_status(sequelize, DataTypes);
+  const orders_tax_status = _orders_tax_status(sequelize, DataTypes);
+  const privileges = _privileges(sequelize, DataTypes);
+  const products = _products(sequelize, DataTypes);
+  const purchase_order_details = _purchase_order_details(sequelize, DataTypes);
+  const purchase_order_status = _purchase_order_status(sequelize, DataTypes);
+  const purchase_orders = _purchase_orders(sequelize, DataTypes);
+  const sales_reports = _sales_reports(sequelize, DataTypes);
+  const shippers = _shippers(sequelize, DataTypes);
+  const strings = _strings(sequelize, DataTypes);
+  const suppliers = _suppliers(sequelize, DataTypes);
 
   privileges.belongsToMany(employees, {
     through: employee_privileges,
