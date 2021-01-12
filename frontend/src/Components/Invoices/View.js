@@ -10,13 +10,12 @@ export function View(props) {
   }, []);
 
   function DisplayInvoices(searchText) {
-    let invoiceList = invoices;
     if (searchText) {
-      invoiceList = invoiceList.filter(function (invoice) {
+      invoices = invoices.filter(function (invoice) {
         return invoice.order_id.toString().includes(searchText);
       });
     }
-    return invoiceList.map((invoice) => (
+    return invoices.map((invoice) => (
       <tr key={invoice.id}>
         <td>{invoice.id}</td>
         <td>{invoice.order_id}</td>

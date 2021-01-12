@@ -17,9 +17,8 @@ export function View(props) {
   }
 
   function DisplayCustomers(searchText) {
-    let customerList = customers;
     if (searchText) {
-      customerList = customerList.filter(function (customer) {
+      customers = customers.filter(function (customer) {
         return (
           customer.last_name.toLowerCase().includes(searchText.toLowerCase()) ||
           customer.first_name
@@ -29,7 +28,7 @@ export function View(props) {
         );
       });
     }
-    return customerList.map((customer) => (
+    return customers.map((customer) => (
       <Row
         key={customer.id}
         customer={customer}

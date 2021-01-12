@@ -16,9 +16,8 @@ export function View(props) {
   }
 
   function DisplayProducts(searchText) {
-    let productList = products;
     if (searchText) {
-      productList = productList.filter(function (product) {
+      products = products.filter(function (product) {
         return (
           product.product_code
             .toLowerCase()
@@ -30,7 +29,7 @@ export function View(props) {
         );
       });
     }
-    return productList.map((product) => (
+    return products.map((product) => (
       <Row
         key={product.id}
         product={product}

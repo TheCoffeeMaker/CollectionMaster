@@ -17,9 +17,8 @@ export function View(props) {
   }
 
   function DisplayEmployees(searchText) {
-    let employeeList = employees;
     if (searchText) {
-      employeeList = employeeList.filter(function (employee) {
+      employees = employees.filter(function (employee) {
         return (
           employee.last_name.toLowerCase().includes(searchText.toLowerCase()) ||
           employee.first_name
@@ -29,7 +28,7 @@ export function View(props) {
         );
       });
     }
-    return employeeList.map((employee) => (
+    return employees.map((employee) => (
       <Row
         key={employee.id}
         employee={employee}

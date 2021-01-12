@@ -11,9 +11,8 @@ export function View(props) {
   }, []);
 
   function DisplaySuppliers(searchText) {
-    let supplierList = suppliers;
     if (searchText) {
-      supplierList = supplierList.filter(function (supplier) {
+      suppliers = suppliers.filter(function (supplier) {
         return (
           supplier.first_name
             .toLowerCase()
@@ -23,7 +22,7 @@ export function View(props) {
         );
       });
     }
-    return supplierList.map((supplier) => (
+    return suppliers.map((supplier) => (
       <Row key={supplier.id} supplier={supplier} />
     ));
   }
