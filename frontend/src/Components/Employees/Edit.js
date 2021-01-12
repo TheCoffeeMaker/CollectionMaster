@@ -27,7 +27,7 @@ export function Edit(props) {
 
   function save() {
     axios
-      .put("/employees/" + employeeId, {
+      .put(`/employees/${employeeId}`, {
         changes: {
           first_name: employeeFirstName,
           last_name: employeeLastName,

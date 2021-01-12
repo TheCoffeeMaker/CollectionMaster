@@ -20,7 +20,7 @@ export function Row(props) {
 
   function save(order) {
     axios
-      .put("/orders/" + order.id, {
+      .put(`/orders/${order.id}`, {
         changes: {
           ship_name: order.ship_name,
           ship_address: order.ship_address,

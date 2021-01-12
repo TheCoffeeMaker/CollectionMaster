@@ -16,7 +16,7 @@ export function Row(props) {
 
   function save(employee) {
     axios
-      .put("/employees/" + employee.id, {
+      .put(`/employees/${employee.id}`, {
         changes: {
           first_name: employee.first_name,
           last_name: employee.last_name,

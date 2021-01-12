@@ -17,19 +17,16 @@ export function View(props) {
     if (orders.length) {
       let getCustomerPerOrder = Promise.all(
         orders.map((order) =>
-          axios.get("/customers/" + order.customer_id).then((cust) => cust.data)
+          axios.get(`/customers/${order.customer_id}`).then((cust) => cust.data)
         )
       );
       getCustomerPerOrder.then((customerList) =>
         setCustomerDetails(customerList)
       );
-    }
-  }, [orders]);
-  useEffect(() => {
-    if (orders.length) {
+
       let getEmployeePerOrder = Promise.all(
         orders.map((order) =>
-          axios.get("/employees/" + order.employee_id).then((empl) => empl.data)
+          axios.get(`/employees/${order.employee_id}`).then((empl) => empl.data)
         )
       );
       getEmployeePerOrder.then((employeeList) =>
@@ -63,9 +60,8 @@ export function View(props) {
   }
 
   function DisplayOrders(searchText) {
-    let orderList = orders;
     if (searchText) {
-      orderList = orderList.filter(function (order) {
+      orders = orders.filter(function (order) {
         return (
           order.ship_name.toLowerCase().includes(searchText.toLowerCase()) ||
           order.ship_address.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -73,7 +69,7 @@ export function View(props) {
         );
       });
     }
-    return orderList.map((order) => (
+    return orders.map((order) => (
       <Row
         key={order.id}
         order={order}

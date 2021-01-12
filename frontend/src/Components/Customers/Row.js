@@ -16,7 +16,7 @@ export function Row(props) {
 
   function save(customer) {
     axios
-      .put("/customers/" + customer.id, {
+      .put(`/customers/${customer.id}`, {
         changes: {
           first_name: customer.first_name,
           last_name: customer.last_name,
@@ -85,7 +85,7 @@ export function Row(props) {
           <div className="btn-group" role="group">
             <SaveButton saveHandler={() => save(updatedCustomer)} />
             <Cancel onClick={onCancelClick}>
-              <svg
+            <svg
                 width="1em"
                 height="1em"
                 viewBox="0 0 16 16"

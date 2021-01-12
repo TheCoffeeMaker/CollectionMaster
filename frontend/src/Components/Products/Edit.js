@@ -29,7 +29,7 @@ export class Edit extends Component {
   };
   save() {
     axios
-      .put("/products/" + this.props.product.id, {
+      .put(`/products/${this.props.product.id}`, {
         changes: {
           product_code: this.state.product_code,
           product_name: this.state.product_name,

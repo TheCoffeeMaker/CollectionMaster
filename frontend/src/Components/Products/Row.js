@@ -25,7 +25,7 @@ export function Row(props) {
 
   function save(product) {
     axios
-      .put("/products/" + product.id, {
+      .put(`/products/${product.id}`, {
         changes: {
           product_code: product.product_code,
           product_name: product.product_name,
