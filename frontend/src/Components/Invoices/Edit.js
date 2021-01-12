@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class Edit extends Component {
   render() {
     return (
-      <React.Fragment>
+      <>
         <div className="mb-3">
           <label htmlFor="formGroupExampleInput" className="form-label">
             Example label
@@ -31,7 +31,7 @@ export class Edit extends Component {
             Save
           </button>
         </div>
-      </React.Fragment>
+      </>
     );
   }
 }
