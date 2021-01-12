@@ -14,13 +14,7 @@ function get_models() {
   return models;
 }
 
-let models = get_models();
-let customers = models.customers;
-let employees = models.employees;
-let invoices = models.invoices;
-let orders = models.orders;
-let products = models.products;
-let suppliers = models.suppliers;
+const { customers, employees, invoices, orders, products, suppliers } = get_models()
 
 app.use(bodyParser.json());
 
