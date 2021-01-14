@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Row } from "./Row";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@material-ui/core";
+import { useStyle } from '../Common/CssStyles';
 
 export function View(props) {
+  const classes = useStyle();
+
   const [invoices, setInvoices] = useState([]);
   useEffect(() => {
     axios.get("/invoices").then((inv) => {
@@ -10,30 +21,33 @@ export function View(props) {
   }, []);
 
   function DisplayInvoices(searchText) {
+    let invoiceList = invoices;
     if (searchText) {
-      invoices = invoices.filter(function (invoice) {
-        return invoice.order_id.toString().includes(searchText);
+      invoiceList = invoiceList.filter(function (invoice) {
+        return (
+          invoice.order_id.toString().includes(searchText)
+        );
       });
     }
-    return invoices.map((invoice) => (
-      <tr key={invoice.id}>
-        <td>{invoice.id}</td>
-        <td>{invoice.order_id}</td>
-        <td>{invoice.invoice_date}</td>
-      </tr>
+    return invoiceList.map((invoice, index) => (
+      <Row key={invoice.id}
+        order_id={invoice.order_id}
+        invoice_date={invoice.invoice_date}
+        row_number={index}
+      />
     ));
   }
 
   return (
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Order Id</th>
-          <th scope="col">Invoice Date</th>
-        </tr>
-      </thead>
-      <tbody>{DisplayInvoices(props.searchText)}</tbody>
-    </table>
+    <Table aria-label="table table-striped">
+      <TableHead>
+        <TableRow>
+          <TableCell component="th" className={classes.textBold}>#</TableCell>
+          <TableCell component="th" className={classes.textBold}>Order Id</TableCell>
+          <TableCell component="th" className={classes.textBold}>Invoice date</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>{DisplayInvoices(props.searchText)}</TableBody>
+    </Table>
   );
 }

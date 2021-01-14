@@ -1,19 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
+import { AppBar, makeStyles } from "@material-ui/core";
 
-export class Footer extends Component {
-  render() {
-    return (
-      <div>
-        <footer className="sticky-footer bg-white fixed-bottom">
-          <div className="container my-auto">
-            <div className="copyright text-center my-auto">
-              <span>Copyright {new Date().getFullYear()}</span>
-            </div>
-          </div>
-        </footer>
-      </div>
-    );
-  }
+const useStyles = makeStyles(() => ({
+  appBar: {
+    top: "auto",
+    bottom: 0,
+  },
+}));
+
+export function Footer() {
+  const classes = useStyles();
+
+  return (
+    <AppBar position="fixed" align="center" className={classes.appBar}>
+      Copyright {new Date().getFullYear()}
+    </AppBar>
+  );
 }
 
 export default Footer;

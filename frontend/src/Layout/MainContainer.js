@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AppBar, makeStyles, Toolbar, Typography } from "@material-ui/core";
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,76 +14,81 @@ import { View as ViewOrders } from "../Components/Orders/View";
 import { View as ViewProducts } from "../Components/Products/View";
 import { View as ViewSuppliers } from "../Components/Suppliers/View";
 
+const useStyles = makeStyles(() => ({
+  appBarText: {
+    flexGrow: 1,
+    color: "#ffffff",
+    textDecoration: "none",
+  },
+}));
+
 export function MainContainer() {
+  const classes = useStyles();
+
   const [searchText, setSearchText] = useState("");
   return (
     <Router>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid">
-          <NavLink className="navbar-brand" to="/">
+      <AppBar position="static">
+        <Toolbar>
+          <Typography
+            variant="h6"
+            className={classes.appBarText}
+            component={NavLink}
+            to="/"
+          >
             Main Menu
-          </NavLink>
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeClassName="active"
-                  to="/customers"
-                >
-                  Customers list
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeClassName="active"
-                  to="/employees"
-                >
-                  Employees list
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeClassName="active"
-                  to="/products"
-                >
-                  Products
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeClassName="active"
-                  to="/invoices"
-                >
-                  Invoices
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeClassName="active"
-                  to="/orders"
-                >
-                  Orders
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeClassName="active"
-                  to="/suppliers"
-                >
-                  Suppliers
-                </NavLink>
-              </li>
-            </ul>
-          </div>
+          </Typography>
+          <Typography
+            variant="h6"
+            className={classes.appBarText}
+            component={NavLink}
+            to="/customers"
+          >
+            Customers List
+          </Typography>
+          <Typography
+            variant="h6"
+            className={classes.appBarText}
+            component={NavLink}
+            to="/employees"
+          >
+            Employees List
+          </Typography>
+          <Typography
+            variant="h6"
+            className={classes.appBarText}
+            component={NavLink}
+            to="/products"
+          >
+            Products
+          </Typography>
+          <Typography
+            variant="h6"
+            className={classes.appBarText}
+            component={NavLink}
+            to="/invoices"
+          >
+            Invoices
+          </Typography>
+          <Typography
+            variant="h6"
+            className={classes.appBarText}
+            component={NavLink}
+            to="/orders"
+          >
+            Orders
+          </Typography>
+          <Typography
+            variant="h6"
+            className={classes.appBarText}
+            component={NavLink}
+            to="/suppliers"
+          >
+            Suppliers
+          </Typography>
           <Search onChange={(searchText) => setSearchText(searchText)} />
-        </div>
-      </nav>
+        </Toolbar>
+      </AppBar>
       <Switch>
         <Route path="/customers">
           <ViewCustomers searchText={searchText} />

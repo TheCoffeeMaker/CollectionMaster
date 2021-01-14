@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Row } from "./Row";
+import {
+  Table,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell,
+} from "@material-ui/core";
+import { useStyle } from "../Common/CssStyles";
 
 export function View(props) {
+  const classes = useStyle();
+
   const [customers, setCustomers] = useState([]);
   const [selectedRowIndex, setSelectedRowIndex] = useState(0);
 
@@ -17,8 +27,9 @@ export function View(props) {
   }
 
   function DisplayCustomers(searchText) {
+    let customerList = customers;
     if (searchText) {
-      customers = customers.filter(function (customer) {
+      customerList = customerList.filter(function (customer) {
         return (
           customer.last_name.toLowerCase().includes(searchText.toLowerCase()) ||
           customer.first_name
@@ -28,7 +39,7 @@ export function View(props) {
         );
       });
     }
-    return customers.map((customer) => (
+    return customerList.map((customer) => (
       <Row
         key={customer.id}
         customer={customer}
@@ -39,17 +50,29 @@ export function View(props) {
   }
 
   return (
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Company</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>{DisplayCustomers(props.searchText)}</tbody>
-    </table>
+    <Table aria-label="customers">
+      <TableHead>
+        <TableRow>
+          <TableCell className={classes.textBold} component="th" scope="col">
+            #
+          </TableCell>
+          <TableCell className={classes.textBold} component="th" scope="col">
+            First Name
+          </TableCell>
+          <TableCell className={classes.textBold} component="th" scope="col">
+            Last Name
+          </TableCell>
+          <TableCell className={classes.textBold} component="th" scope="col">
+            Company
+          </TableCell>
+          <TableCell
+            className={classes.textBold}
+            component="th"
+            scope="col"
+          ></TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>{DisplayCustomers(props.searchText)}</TableBody>
+    </Table>
   );
 }

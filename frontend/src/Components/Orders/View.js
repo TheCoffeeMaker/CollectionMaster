@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Row } from "./Row";
+import { Table, TableBody, TableHead, TableRow, TableCell } from "@material-ui/core";
+import { useStyle } from '../Common/CssStyles';
 
 export function View(props) {
+  const classes = useStyle();
+
   const [orders, setOrders] = useState([]);
   const [customerDetails, setCustomerDetails] = useState([]);
   const [employeeDetails, setEmployeeDetails] = useState([]);
@@ -40,7 +44,7 @@ export function View(props) {
     return (
       (customerItem &&
         customerItem.last_name + " " + customerItem.first_name) || (
-        <div className="splash"></div>
+        <div className={classes.splash}></div>
       )
     );
   }
@@ -50,7 +54,7 @@ export function View(props) {
     return (
       (employeeItem &&
         employeeItem.last_name + " " + employeeItem.first_name) || (
-        <div className="splash"></div>
+        <div className={classes.splash}></div>
       )
     );
   }
@@ -60,8 +64,9 @@ export function View(props) {
   }
 
   function DisplayOrders(searchText) {
+    let orderList = orders;
     if (searchText) {
-      orders = orders.filter(function (order) {
+      orderList = orderList.filter(function (order) {
         return (
           order.ship_name.toLowerCase().includes(searchText.toLowerCase()) ||
           order.ship_address.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -69,7 +74,7 @@ export function View(props) {
         );
       });
     }
-    return orders.map((order) => (
+    return orderList.map((order) => (
       <Row
         key={order.id}
         order={order}
@@ -82,19 +87,19 @@ export function View(props) {
   }
 
   return (
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Ship Name</th>
-          <th scope="col">Ship Address</th>
-          <th scope="col">Ship City</th>
-          <th scope="col">Employee</th>
-          <th scope="col">Customer</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>{DisplayOrders(props.searchText)}</tbody>
-    </table>
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell className={classes.textBold} component="th" scope="col">#</TableCell>
+          <TableCell className={classes.textBold} component="th" scope="col">Ship Name</TableCell>
+          <TableCell className={classes.textBold} component="th" scope="col">Ship Address</TableCell>
+          <TableCell className={classes.textBold} component="th" scope="col">Ship City</TableCell>
+          <TableCell className={classes.textBold} component="th" scope="col">Employee</TableCell>
+          <TableCell className={classes.textBold} component="th" scope="col">Customer</TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>{DisplayOrders(props.searchText)}</TableBody>
+    </Table>
   );
 }

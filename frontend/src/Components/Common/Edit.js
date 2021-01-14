@@ -1,6 +1,8 @@
+import TextField from "@material-ui/core/TextField";
+
 export function Edit(props) {
   return (
-    <input
+    <TextField
       type="text"
       className="form-control"
       id={props.id}

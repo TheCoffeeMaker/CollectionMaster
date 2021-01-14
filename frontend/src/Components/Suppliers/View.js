@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Row } from "./Row";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@material-ui/core";
+import { useStyle } from '../Common/CssStyles';
 
 export function View(props) {
+  const classes = useStyle();
+
   const [suppliers, setSuppliers] = useState([]);
   useEffect(() => {
     axios.get("/suppliers").then((sup) => {
@@ -11,8 +21,9 @@ export function View(props) {
   }, []);
 
   function DisplaySuppliers(searchText) {
+    let supplierList = suppliers;
     if (searchText) {
-      suppliers = suppliers.filter(function (supplier) {
+      supplierList = supplierList.filter(function (supplier) {
         return (
           supplier.first_name
             .toLowerCase()
@@ -22,22 +33,22 @@ export function View(props) {
         );
       });
     }
-    return suppliers.map((supplier) => (
+    return supplierList.map((supplier) => (
       <Row key={supplier.id} supplier={supplier} />
     ));
   }
 
   return (
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Company</th>
-        </tr>
-      </thead>
-      <tbody>{DisplaySuppliers(props.searchText)}</tbody>
-    </table>
+    <Table aria-label="suppliers">
+      <TableHead>
+        <TableRow>
+          <TableCell className={classes.textBold}>#</TableCell>
+          <TableCell className={classes.textBold}>First Name</TableCell>
+          <TableCell className={classes.textBold}>Last Name</TableCell>
+          <TableCell className={classes.textBold}>Company</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>{DisplaySuppliers(props.searchText)}</TableBody>
+    </Table>
   );
 }

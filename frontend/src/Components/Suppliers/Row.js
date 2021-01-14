@@ -1,10 +1,14 @@
+import { TableCell, TableRow } from "@material-ui/core";
+
 export function Row(props) {
   return (
-    <tr key={props.supplier.id}>
-      <th scope="row">{props.supplier.id}</th>
-      <td>{props.supplier.first_name}</td>
-      <td>{props.supplier.last_name}</td>
-      <td>{props.supplier.company}</td>
-    </tr>
+    <TableRow key={props.supplier.id}>
+      <TableCell component="th" scope="row">
+        {props.supplier.id}
+      </TableCell>
+      <TableCell>{props.supplier.first_name}</TableCell>
+      <TableCell>{props.supplier.last_name}</TableCell>
+      <TableCell>{props.supplier.company}</TableCell>
+    </TableRow>
   );
 }
