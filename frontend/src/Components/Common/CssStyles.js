@@ -1,9 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
 export const useStyle = makeStyles(() => ({
-  textBold: {
-    fontWeight: "bold",
-  },
   splash: {
     animation: "$waitingAnimation 0.7s linear infinite alternate",
     width: "20px",

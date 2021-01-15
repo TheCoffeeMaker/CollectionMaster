@@ -7,12 +7,10 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  Box,
 } from "@material-ui/core";
-import { useStyle } from '../Common/CssStyles';
 
 export function View(props) {
-  const classes = useStyle();
-
   const [suppliers, setSuppliers] = useState([]);
   useEffect(() => {
     axios.get("/suppliers").then((sup) => {
@@ -42,10 +40,18 @@ export function View(props) {
     <Table aria-label="suppliers">
       <TableHead>
         <TableRow>
-          <TableCell className={classes.textBold}>#</TableCell>
-          <TableCell className={classes.textBold}>First Name</TableCell>
-          <TableCell className={classes.textBold}>Last Name</TableCell>
-          <TableCell className={classes.textBold}>Company</TableCell>
+          <TableCell>
+            <Box fontWeight="bold">#</Box>
+          </TableCell>
+          <TableCell>
+            <Box fontWeight="bold">First Name</Box>
+          </TableCell>
+          <TableCell>
+            <Box fontWeight="bold">Last Name</Box>
+          </TableCell>
+          <TableCell>
+            <Box fontWeight="bold">Company</Box>
+          </TableCell>
         </TableRow>
       </TableHead>
       <TableBody>{DisplaySuppliers(props.searchText)}</TableBody>

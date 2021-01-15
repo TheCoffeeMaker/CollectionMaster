@@ -7,12 +7,10 @@ import {
   TableHead,
   TableRow,
   TableCell,
+  Box,
 } from "@material-ui/core";
-import { useStyle } from "../Common/CssStyles";
 
 export function View(props) {
-  const classes = useStyle();
-
   const [customers, setCustomers] = useState([]);
   const [selectedRowIndex, setSelectedRowIndex] = useState(0);
 
@@ -53,23 +51,19 @@ export function View(props) {
     <Table aria-label="customers">
       <TableHead>
         <TableRow>
-          <TableCell className={classes.textBold} component="th" scope="col">
-            #
+          <TableCell component="th" scope="col">
+            <Box fontWeight="bold">#</Box>
           </TableCell>
-          <TableCell className={classes.textBold} component="th" scope="col">
-            First Name
+          <TableCell component="th" scope="col">
+            <Box fontWeight="bold">First Name</Box>
           </TableCell>
-          <TableCell className={classes.textBold} component="th" scope="col">
-            Last Name
+          <TableCell component="th" scope="col">
+            <Box fontWeight="bold">Last Name</Box>
           </TableCell>
-          <TableCell className={classes.textBold} component="th" scope="col">
-            Company
+          <TableCell component="th" scope="col">
+            <Box fontWeight="bold">Company</Box>
           </TableCell>
-          <TableCell
-            className={classes.textBold}
-            component="th"
-            scope="col"
-          ></TableCell>
+          <TableCell component="th" scope="col"></TableCell>
         </TableRow>
       </TableHead>
       <TableBody>{DisplayCustomers(props.searchText)}</TableBody>

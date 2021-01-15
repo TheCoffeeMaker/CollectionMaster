@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Row } from "./Row";
-import { Table, TableBody, TableHead, TableRow, TableCell } from "@material-ui/core";
-import { useStyle } from '../Common/CssStyles';
+import {
+  Table,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell,
+  Box,
+} from "@material-ui/core";
+import { useStyle } from "../Common/CssStyles";
 
 export function View(props) {
   const classes = useStyle();
@@ -87,15 +94,27 @@ export function View(props) {
   }
 
   return (
-    <Table>
+    <Table aria-label="orders">
       <TableHead>
         <TableRow>
-          <TableCell className={classes.textBold} component="th" scope="col">#</TableCell>
-          <TableCell className={classes.textBold} component="th" scope="col">Ship Name</TableCell>
-          <TableCell className={classes.textBold} component="th" scope="col">Ship Address</TableCell>
-          <TableCell className={classes.textBold} component="th" scope="col">Ship City</TableCell>
-          <TableCell className={classes.textBold} component="th" scope="col">Employee</TableCell>
-          <TableCell className={classes.textBold} component="th" scope="col">Customer</TableCell>
+          <TableCell component="th" scope="col">
+            <Box fontWeight="bold">#</Box>
+          </TableCell>
+          <TableCell component="th" scope="col">
+            <Box fontWeight="bold">Ship Name</Box>
+          </TableCell>
+          <TableCell component="th" scope="col">
+            <Box fontWeight="bold">Ship Address</Box>
+          </TableCell>
+          <TableCell component="th" scope="col">
+            <Box fontWeight="bold">Ship City</Box>
+          </TableCell>
+          <TableCell component="th" scope="col">
+            <Box fontWeight="bold">Employee</Box>
+          </TableCell>
+          <TableCell component="th" scope="col">
+            <Box fontWeight="bold">Customer</Box>
+          </TableCell>
           <TableCell></TableCell>
         </TableRow>
       </TableHead>

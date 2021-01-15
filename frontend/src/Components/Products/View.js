@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Row } from "./Row";
-import { Table, TableBody, TableHead, TableRow, TableCell } from "@material-ui/core";
-import { useStyle } from '../Common/CssStyles';
+import {
+  Table,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell,
+  Box,
+} from "@material-ui/core";
 
 export function View(props) {
-  const classes = useStyle();
-
   const [products, setProducts] = useState([]);
   const [selectedRowIndex, setSelectedRowIndex] = useState(0);
   useEffect(() => {
@@ -45,13 +49,21 @@ export function View(props) {
   }
 
   return (
-    <Table>
+    <Table aria-label="products">
       <TableHead>
         <TableRow>
-          <TableCell className={classes.textBold} component="th" scope="col">#</TableCell>
-          <TableCell className={classes.textBold} component="th" scope="col">Product Code</TableCell>
-          <TableCell className={classes.textBold} component="th" scope="col">Product Name</TableCell>
-          <TableCell className={classes.textBold} component="th" scope="col">Standard Cost</TableCell>
+          <TableCell component="th" scope="col">
+            <Box fontWeight="bold">#</Box>
+          </TableCell>
+          <TableCell component="th" scope="col">
+            <Box fontWeight="bold">Product Code</Box>
+          </TableCell>
+          <TableCell component="th" scope="col">
+            <Box fontWeight="bold">Product Name</Box>
+          </TableCell>
+          <TableCell component="th" scope="col">
+            <Box fontWeight="bold">Standard Cost</Box>
+          </TableCell>
           <TableCell></TableCell>
         </TableRow>
       </TableHead>
