@@ -6,7 +6,6 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
-import { Search } from "../Components/Common/Search";
 import { View as ViewCustomers } from "../Components/Customers/View";
 import { View as ViewEmployees } from "../Components/Employees/View";
 import { View as ViewInvoices } from "../Components/Invoices/View";
@@ -25,7 +24,6 @@ const useStyles = makeStyles(() => ({
 export function MainContainer() {
   const classes = useStyles();
 
-  const [searchText, setSearchText] = useState("");
   return (
     <Router>
       <AppBar position="static">
@@ -86,27 +84,26 @@ export function MainContainer() {
           >
             Suppliers
           </Typography>
-          <Search onChange={(searchText) => setSearchText(searchText)} />
         </Toolbar>
       </AppBar>
       <Switch>
         <Route path="/customers">
-          <ViewCustomers searchText={searchText} />
+          <ViewCustomers />
         </Route>
         <Route path="/employees">
-          <ViewEmployees searchText={searchText} />
+          <ViewEmployees />
         </Route>
         <Route path="/products">
-          <ViewProducts searchText={searchText} />
+          <ViewProducts />
         </Route>
         <Route path="/invoices">
-          <ViewInvoices searchText={searchText} />
+          <ViewInvoices />
         </Route>
         <Route path="/orders">
-          <ViewOrders searchText={searchText} />
+          <ViewOrders />
         </Route>
         <Route path="/suppliers">
-          <ViewSuppliers searchText={searchText} />
+          <ViewSuppliers />
         </Route>
       </Switch>
     </Router>

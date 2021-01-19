@@ -10,30 +10,13 @@ import {
   Box,
 } from "@material-ui/core";
 
-export function View(props) {
+export function View() {
   const [invoices, setInvoices] = useState([]);
   useEffect(() => {
     axios.get("/invoices").then((inv) => {
       setInvoices(inv.data);
     });
   }, []);
-
-  function DisplayInvoices(searchText) {
-    let invoiceList = invoices;
-    if (searchText) {
-      invoiceList = invoiceList.filter(function (invoice) {
-        return invoice.order_id.toString().includes(searchText);
-      });
-    }
-    return invoiceList.map((invoice, index) => (
-      <Row
-        key={invoice.id}
-        order_id={invoice.order_id}
-        invoice_date={invoice.invoice_date}
-        row_number={index}
-      />
-    ));
-  }
 
   return (
     <Table aria-label="invoices">
@@ -50,7 +33,14 @@ export function View(props) {
           </TableCell>
         </TableRow>
       </TableHead>
-      <TableBody>{DisplayInvoices(props.searchText)}</TableBody>
+      <TableBody>{invoices.map((invoice, index) => (
+      <Row
+        key={invoice.id}
+        order_id={invoice.order_id}
+        invoice_date={invoice.invoice_date}
+        row_number={index}
+      />
+    ))}</TableBody>
     </Table>
   );
 }

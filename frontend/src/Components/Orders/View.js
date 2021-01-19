@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { useStyle } from "../Common/CssStyles";
 
-export function View(props) {
+export function View() {
   const classes = useStyle();
 
   const [orders, setOrders] = useState([]);
@@ -70,29 +70,6 @@ export function View(props) {
     setSelectedRowIndex(index);
   }
 
-  function DisplayOrders(searchText) {
-    let orderList = orders;
-    if (searchText) {
-      orderList = orderList.filter(function (order) {
-        return (
-          order.ship_name.toLowerCase().includes(searchText.toLowerCase()) ||
-          order.ship_address.toLowerCase().includes(searchText.toLowerCase()) ||
-          order.ship_city.toLowerCase().includes(searchText.toLowerCase())
-        );
-      });
-    }
-    return orderList.map((order) => (
-      <Row
-        key={order.id}
-        order={order}
-        findCustomerForOrder={findCustomerForOrder}
-        findEmployeeForOrder={findEmployeeForOrder}
-        selectedRowIndex={selectedRowIndex}
-        onClick={() => onClick(order.id)}
-      />
-    ));
-  }
-
   return (
     <Table aria-label="orders">
       <TableHead>
@@ -118,7 +95,16 @@ export function View(props) {
           <TableCell></TableCell>
         </TableRow>
       </TableHead>
-      <TableBody>{DisplayOrders(props.searchText)}</TableBody>
+      <TableBody>{orders.map((order) => (
+      <Row
+        key={order.id}
+        order={order}
+        findCustomerForOrder={findCustomerForOrder}
+        findEmployeeForOrder={findEmployeeForOrder}
+        selectedRowIndex={selectedRowIndex}
+        onClick={() => onClick(order.id)}
+      />
+    ))}</TableBody>
     </Table>
   );
 }

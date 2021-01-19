@@ -10,7 +10,7 @@ import {
   Box,
 } from "@material-ui/core";
 
-export function View(props) {
+export function View() {
   const [customers, setCustomers] = useState([]);
   const [selectedRowIndex, setSelectedRowIndex] = useState(0);
 
@@ -22,29 +22,6 @@ export function View(props) {
 
   function onClick(index) {
     setSelectedRowIndex(index);
-  }
-
-  function DisplayCustomers(searchText) {
-    let customerList = customers;
-    if (searchText) {
-      customerList = customerList.filter(function (customer) {
-        return (
-          customer.last_name.toLowerCase().includes(searchText.toLowerCase()) ||
-          customer.first_name
-            .toLowerCase()
-            .includes(searchText.toLowerCase()) ||
-          customer.company.toLowerCase().includes(searchText.toLowerCase())
-        );
-      });
-    }
-    return customerList.map((customer) => (
-      <Row
-        key={customer.id}
-        customer={customer}
-        selectedRowIndex={selectedRowIndex}
-        onClick={() => onClick(customer.id)}
-      />
-    ));
   }
 
   return (
@@ -66,7 +43,14 @@ export function View(props) {
           <TableCell component="th" scope="col"></TableCell>
         </TableRow>
       </TableHead>
-      <TableBody>{DisplayCustomers(props.searchText)}</TableBody>
+      <TableBody>{customers.map((customer) => (
+      <Row
+        key={customer.id}
+        customer={customer}
+        selectedRowIndex={selectedRowIndex}
+        onClick={() => onClick(customer.id)}
+      />
+    ))}</TableBody>
     </Table>
   );
 }

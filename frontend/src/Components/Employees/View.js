@@ -10,7 +10,7 @@ import {
   Box,
 } from "@material-ui/core";
 
-export function View(props) {
+export function View() {
   const [employees, setEmployees] = useState([]);
   const [selectedRowIndex, setSelectedRowIndex] = useState(0);
 
@@ -22,29 +22,6 @@ export function View(props) {
 
   function onClick(index) {
     setSelectedRowIndex(index);
-  }
-
-  function DisplayEmployees(searchText) {
-    let employeeList = employees;
-    if (searchText) {
-      employeeList = employeeList.filter(function (employee) {
-        return (
-          employee.last_name.toLowerCase().includes(searchText.toLowerCase()) ||
-          employee.first_name
-            .toLowerCase()
-            .includes(searchText.toLowerCase()) ||
-          employee.company.toLowerCase().includes(searchText.toLowerCase())
-        );
-      });
-    }
-    return employeeList.map((employee) => (
-      <Row
-        key={employee.id}
-        employee={employee}
-        selectedRowIndex={selectedRowIndex}
-        onClick={() => onClick(employee.id)}
-      />
-    ));
   }
 
   return (
@@ -66,7 +43,14 @@ export function View(props) {
           <TableCell></TableCell>
         </TableRow>
       </TableHead>
-      <TableBody>{DisplayEmployees(props.searchText)}</TableBody>
+      <TableBody>{employees.map((employee) => (
+      <Row
+        key={employee.id}
+        employee={employee}
+        selectedRowIndex={selectedRowIndex}
+        onClick={() => onClick(employee.id)}
+      />
+    ))}</TableBody>
     </Table>
   );
 }

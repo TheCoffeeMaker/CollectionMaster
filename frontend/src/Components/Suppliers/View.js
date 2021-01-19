@@ -10,31 +10,13 @@ import {
   Box,
 } from "@material-ui/core";
 
-export function View(props) {
+export function View() {
   const [suppliers, setSuppliers] = useState([]);
   useEffect(() => {
     axios.get("/suppliers").then((sup) => {
       setSuppliers(sup.data);
     });
   }, []);
-
-  function DisplaySuppliers(searchText) {
-    let supplierList = suppliers;
-    if (searchText) {
-      supplierList = supplierList.filter(function (supplier) {
-        return (
-          supplier.first_name
-            .toLowerCase()
-            .includes(searchText.toLowerCase()) ||
-          supplier.last_name.toLowerCase().includes(searchText.toLowerCase()) ||
-          supplier.company.toLowerCase().includes(searchText.toLowerCase())
-        );
-      });
-    }
-    return supplierList.map((supplier) => (
-      <Row key={supplier.id} supplier={supplier} />
-    ));
-  }
 
   return (
     <Table aria-label="suppliers">
@@ -54,7 +36,9 @@ export function View(props) {
           </TableCell>
         </TableRow>
       </TableHead>
-      <TableBody>{DisplaySuppliers(props.searchText)}</TableBody>
+      <TableBody>{suppliers.map((supplier) => (
+      <Row key={supplier.id} supplier={supplier} />
+    ))}</TableBody>
     </Table>
   );
 }

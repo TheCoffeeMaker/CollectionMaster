@@ -10,7 +10,7 @@ import {
   Box,
 } from "@material-ui/core";
 
-export function View(props) {
+export function View() {
   const [products, setProducts] = useState([]);
   const [selectedRowIndex, setSelectedRowIndex] = useState(0);
   useEffect(() => {
@@ -21,31 +21,6 @@ export function View(props) {
 
   function onClick(index) {
     setSelectedRowIndex(index);
-  }
-
-  function DisplayProducts(searchText) {
-    let productList = products;
-    if (searchText) {
-      productList = productList.filter(function (product) {
-        return (
-          product.product_code
-            .toLowerCase()
-            .includes(searchText.toLowerCase()) ||
-          product.product_name
-            .toLowerCase()
-            .includes(searchText.toLowerCase()) ||
-          product.standard_cost.toLowerCase().includes(searchText.toLowerCase())
-        );
-      });
-    }
-    return productList.map((product) => (
-      <Row
-        key={product.id}
-        product={product}
-        selectedRowIndex={selectedRowIndex}
-        onClick={() => onClick(product.id)}
-      />
-    ));
   }
 
   return (
@@ -67,7 +42,14 @@ export function View(props) {
           <TableCell></TableCell>
         </TableRow>
       </TableHead>
-      <TableBody>{DisplayProducts(props.searchText)}</TableBody>
+      <TableBody>{products.map((product) => (
+      <Row
+        key={product.id}
+        product={product}
+        selectedRowIndex={selectedRowIndex}
+        onClick={() => onClick(product.id)}
+      />
+    ))}</TableBody>
     </Table>
   );
 }
