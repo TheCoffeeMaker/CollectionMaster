@@ -20,8 +20,6 @@ module.exports = (Collection) => {
   // Read many
   // =========
   const readMany = (req, res) => {
-    let query = res.locals.query || {};
-
     Collection.findAll().then((col) => {
       res.send(col);
       if (col == null) {
@@ -64,12 +62,6 @@ module.exports = (Collection) => {
   // Remove
   // ======
   const remove = (req, res) => {
-    // User.destroy({
-    //     where: {
-    //       firstName: "Jane"
-    //     }
-    //   });
-
     Collection.destroy({ _id: req.params._id }, (e) => {
       if (e) res.status(500).send(e);
       else res.sendStatus(200);
