@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const GenericController = require("./GenericController");
+const GenericController = require("./Router");
 const port = 4000;
 
 function get_models() {

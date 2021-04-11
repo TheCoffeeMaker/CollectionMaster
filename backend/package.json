@@ -16,7 +16,6 @@
   },
   "scripts": {
     "start": "nodemon ./main.js",
-    "test": "jest",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write ."
   }
