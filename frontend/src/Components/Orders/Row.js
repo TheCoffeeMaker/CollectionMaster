@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Edit } from "../Common/Edit";
-import axios from "axios";
+import { saveOrder } from '../../api/OrdersApi';
 import { TableRow, TableCell } from "@material-ui/core";
 import SaveIcon from '@material-ui/icons/Save';
 import EditIcon from '@material-ui/icons/Edit';
@@ -20,14 +20,15 @@ export function Row(props) {
   }
 
   function save(order) {
-    axios
-      .put(`/orders/${order.id}`, {
-        changes: {
-          ship_name: order.ship_name,
-          ship_address: order.ship_address,
-          ship_city: order.ship_city,
-        },
-      })
+    const data = {
+      changes: {
+        ship_name: order.ship_name,
+        ship_address: order.ship_address,
+        ship_city: order.ship_city,
+      },
+    };
+    
+    saveOrder(order.id, data)
       .then((cust) => {
         console.log(cust.data);
         setEditMode(!isEditMode);

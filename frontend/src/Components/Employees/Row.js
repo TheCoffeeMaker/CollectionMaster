@@ -1,4 +1,4 @@
-import axios from "axios";
+import { saveEmployee } from '../../api/EmployeesApi';
 import { Edit } from "../Common/Edit";
 import { useState } from "react";
 import { TableRow, TableCell } from "@material-ui/core";
@@ -15,18 +15,18 @@ export function Row(props) {
   }
 
   function save(employee) {
-    axios
-      .put(`/employees/${employee.id}`, {
-        changes: {
-          first_name: employee.first_name,
-          last_name: employee.last_name,
-          company: employee.company,
-        },
-      })
-      .then((cust) => {
-        console.log(cust.data);
-        setEditMode(!isEditMode);
-      });
+    const data = {
+      changes: {
+        first_name: employee.first_name,
+        last_name: employee.last_name,
+        company: employee.company,
+      },
+    };
+
+    saveEmployee(employee.id, data).then((cust) => {
+      console.log(cust.data);
+      setEditMode(!isEditMode);
+    });
   }
 
   function onClick() {

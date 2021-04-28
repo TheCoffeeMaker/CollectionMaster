@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { saveProduct } from '../../api/ProductsApi';
 import { Edit } from "../Common/Edit";
 import { TableRow, TableCell } from "@material-ui/core";
 import SaveIcon from '@material-ui/icons/Save';
@@ -24,18 +25,18 @@ export function Row(props) {
   }
 
   function save(product) {
-    axios
-      .put(`/products/${product.id}`, {
-        changes: {
-          product_code: product.product_code,
-          product_name: product.product_name,
-          standard_cost: product.standard_cost,
-        },
-      })
-      .then((cust) => {
-        console.log(cust.data);
-        setEditMode(!isEditMode);
-      });
+    const data = {
+      changes: {
+        product_code: product.product_code,
+        product_name: product.product_name,
+        standard_cost: product.standard_cost,
+      },
+    };
+
+    saveProduct(product.id, data).then((cust) => {
+      console.log(cust.data);
+      setEditMode(!isEditMode);
+    });
   }
 
   return (

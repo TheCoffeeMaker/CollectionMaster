@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { getSuppliers } from '../../api/SuppliersApi';
 import { Row } from "./Row";
 import {
   Table,
@@ -13,7 +13,7 @@ import {
 export function View(props) {
   const [suppliers, setSuppliers] = useState([]);
   useEffect(() => {
-    axios.get("/suppliers").then((sup) => {
+    getSuppliers().then((sup) => {
       setSuppliers(sup.data);
     });
   }, []);
