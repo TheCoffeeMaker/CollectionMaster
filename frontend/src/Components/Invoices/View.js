@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { getInvoices } from '../../api/InvoicesApi';
 import { Row } from "./Row";
 import {
   Table,
@@ -13,7 +13,7 @@ import {
 export function View(props) {
   const [invoices, setInvoices] = useState([]);
   useEffect(() => {
-    axios.get("/invoices").then((inv) => {
+    getInvoices().then((inv) => {
       setInvoices(inv.data);
     });
   }, []);

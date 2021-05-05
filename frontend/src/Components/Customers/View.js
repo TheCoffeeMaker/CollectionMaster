@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { getCustomers } from '../../api/CustomersApi';
 import { Row } from "./Row";
 import {
   Table,
@@ -15,7 +15,7 @@ export function View(props) {
   const [selectedRowIndex, setSelectedRowIndex] = useState(0);
 
   useEffect(() => {
-    axios.get("/customers").then((cust) => {
+    getCustomers().then((cust) => {
       setCustomers(cust.data);
     });
   }, []);

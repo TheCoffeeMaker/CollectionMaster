@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require('cors');
 const app = express();
 const GenericController = require("./Router");
 const port = 4000;
@@ -15,7 +16,7 @@ function get_models() {
 }
 
 const { customers, employees, invoices, orders, products, suppliers } = get_models()
-
+app.use(cors()); // allow all cors for now - until dev and prod env are created
 app.use(bodyParser.json());
 
 app.use("/customers", GenericController(customers));
