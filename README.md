@@ -36,8 +36,13 @@ Work in progress - documenting for now.
 5. Develop the feature and/or refactor code -> keep the tests green
 
 
-**Directory structure**
+**Directory structure inside the src folder on FE**
 
 1. shared - header, footer, aside, content, etc - react components used in templates
-2. templates - abstraction over router - keeps routes simple and clear
-3. components - the rest of the components
+2. templates - abstractions over router - keeps the routes simple and clear 
+3. pages - components found at a specific route 
+4. components - the rest of the components
+5. api - abstraction over api library (RestHelper)
+6. config - react env variables for development and production
+7. Layout - home of the main router
+8. img - images folder - added when necesary
