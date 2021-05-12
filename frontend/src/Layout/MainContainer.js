@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core";
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,32 +6,19 @@ import {
 import PageRoute from '../templates/PageRoute';
 import ProtectedPageRoute from '../templates/ProtectedPageRoute';
 
-import { View as ViewLogin } from '../components/Login/View';
-import { View as ViewCustomers } from "../components/Customers/View";
-import { View as ViewEmployees } from "../components/Employees/View";
-import { View as ViewInvoices } from "../components/Invoices/View";
-import { View as ViewOrders } from "../components/Orders/View";
-import { View as ViewProducts } from "../components/Products/View";
-import { View as ViewSuppliers } from "../components/Suppliers/View";
-import { View as ViewAppointment } from "../components/Appointment/View";
-import { View as AppointmentsDayView } from '../components/AppointmentsDayView/View';
+import { View as ViewLogin } from '../pages/Login/View';
+import { View as ViewCustomers } from "../pages/Customers/View";
+import { View as ViewEmployees } from "../pages/Employees/View";
+import { View as ViewInvoices } from "../pages/Invoices/View";
+import { View as ViewOrders } from "../pages/Orders/View";
+import { View as ViewProducts } from "../pages/Products/View";
+import { View as ViewSuppliers } from "../pages/Suppliers/View";
 
-const useStyles = makeStyles(() => ({
-  appBarText: {
-    flexGrow: 1,
-    color: "#ffffff",
-    textDecoration: "none",
-  },
-}));
+
 
 export function MainContainer() {
-  const classes = useStyles();
 
-  const appointmentsList = [
-    { name: 'Alex', lastName:'Pop', phoneNumber:'00000'},
-    { name: 'Pisica', lastName:'Andreea', phoneNumber:'00001'},
- ];
-
+  // TO DO: fix the searching functionality after moving of the header
   const [searchText, setSearchText] = useState("");
   return (
     <Router>
