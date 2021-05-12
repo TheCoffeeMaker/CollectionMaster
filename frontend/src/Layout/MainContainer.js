@@ -1,20 +1,21 @@
 import React, { useState } from "react";
-import { AppBar, makeStyles, Toolbar, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  NavLink,
 } from "react-router-dom";
-import { Search } from "../Components/Common/Search";
-import { View as ViewCustomers } from "../Components/Customers/View";
-import { View as ViewEmployees } from "../Components/Employees/View";
-import { View as ViewInvoices } from "../Components/Invoices/View";
-import { View as ViewOrders } from "../Components/Orders/View";
-import { View as ViewProducts } from "../Components/Products/View";
-import { View as ViewSuppliers } from "../Components/Suppliers/View";
-import { View as ViewAppointment } from "../Components/Appointment/View";
-import { View as AppointmentsDayView } from '../Components/AppointmentsDayView/View';
+import PageRoute from '../templates/PageRoute';
+import ProtectedPageRoute from '../templates/ProtectedPageRoute';
+
+import { View as ViewLogin } from '../components/Login/View';
+import { View as ViewCustomers } from "../components/Customers/View";
+import { View as ViewEmployees } from "../components/Employees/View";
+import { View as ViewInvoices } from "../components/Invoices/View";
+import { View as ViewOrders } from "../components/Orders/View";
+import { View as ViewProducts } from "../components/Products/View";
+import { View as ViewSuppliers } from "../components/Suppliers/View";
+import { View as ViewAppointment } from "../components/Appointment/View";
+import { View as AppointmentsDayView } from '../components/AppointmentsDayView/View';
 
 const useStyles = makeStyles(() => ({
   appBarText: {
@@ -35,90 +36,28 @@ export function MainContainer() {
   const [searchText, setSearchText] = useState("");
   return (
     <Router>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography
-            variant="h6"
-            className={classes.appBarText}
-            component={NavLink}
-            to="/"
-          >
-            Main Menu
-          </Typography>
-          <Typography
-            variant="h6"
-            className={classes.appBarText}
-            component={NavLink}
-            to="/customers"
-          >
-            Customers List
-          </Typography>
-          <Typography
-            variant="h6"
-            className={classes.appBarText}
-            component={NavLink}
-            to="/employees"
-          >
-            Employees List
-          </Typography>
-          <Typography
-            variant="h6"
-            className={classes.appBarText}
-            component={NavLink}
-            to="/products"
-          >
-            Products
-          </Typography>
-          <Typography
-            variant="h6"
-            className={classes.appBarText}
-            component={NavLink}
-            to="/invoices"
-          >
-            Invoices
-          </Typography>
-          <Typography
-            variant="h6"
-            className={classes.appBarText}
-            component={NavLink}
-            to="/orders"
-          >
-            Orders
-          </Typography>
-          <Typography
-            variant="h6"
-            className={classes.appBarText}
-            component={NavLink}
-            to="/suppliers"
-          >
-            Suppliers
-          </Typography>
-          <Search onChange={(searchText) => setSearchText(searchText)} />
-        </Toolbar>
-      </AppBar>
       <Switch>
-        <Route path="/" exact={true}>
-          <ViewAppointment customer={{name: 'Alex', lastName: 'Pop', phoneNumber: '123'}}/>
-          <AppointmentsDayView id="testAppointsmeents" appointments={appointmentsList}/>
-        </Route>
-        <Route path="/customers">
+        <PageRoute path="/" exact={true}>
+          <ViewLogin/>
+        </PageRoute>
+        <ProtectedPageRoute path="/customers">
           <ViewCustomers searchText={searchText} />
-        </Route>
-        <Route path="/employees">
+        </ProtectedPageRoute>
+        <ProtectedPageRoute path="/employees">
           <ViewEmployees searchText={searchText} />
-        </Route>
-        <Route path="/products">
+        </ProtectedPageRoute>
+        <ProtectedPageRoute path="/products">
           <ViewProducts searchText={searchText} />
-        </Route>
-        <Route path="/invoices">
+        </ProtectedPageRoute>
+        <ProtectedPageRoute path="/invoices">
           <ViewInvoices searchText={searchText} />
-        </Route>
-        <Route path="/orders">
+        </ProtectedPageRoute>
+        <ProtectedPageRoute path="/orders">
           <ViewOrders searchText={searchText} />
-        </Route>
-        <Route path="/suppliers">
+        </ProtectedPageRoute>
+        <ProtectedPageRoute path="/suppliers">
           <ViewSuppliers searchText={searchText} />
-        </Route>
+        </ProtectedPageRoute>
       </Switch>
     </Router>
   );
