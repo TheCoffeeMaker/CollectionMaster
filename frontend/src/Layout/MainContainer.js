@@ -14,6 +14,8 @@ import { View as ViewOrders } from "../pages/Orders/View";
 import { View as ViewProducts } from "../pages/Products/View";
 import { View as ViewSuppliers } from "../pages/Suppliers/View";
 
+import './index.scss';
+
 
 
 export function MainContainer() {

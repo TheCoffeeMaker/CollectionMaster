@@ -1,5 +1,7 @@
 import React from 'react';
+import { Button, TextField } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
+import './index.scss';
 
 
 export const View = () => {
@@ -10,8 +12,32 @@ export const View = () => {
         history.push("/customers");
     }
 
-    return <div>
-        <h1>Login page</h1>
-        <button onClick={handleLogin}>Login</button>
-    </div>
+    return (
+        <div className="login-page">
+            <div className="container">
+                <div className="login-container">
+                    <h3>Get Started</h3>
+                    <div>
+                        <TextField 
+                        label="Email" 
+                        />
+                    </div>    
+                    <div>
+                    <TextField
+                    id="standard-password-input"
+                    label="Password"
+                    type="password"
+                    autoComplete="current-password"
+                    />
+                    </div>
+                    <div>
+                        <Button variant="contained" color="primary" onClick={handleLogin}>Login</Button>
+                    </div>
+                </div>
+                <div className="login-info">
+            
+                </div>
+            </div>
+         </div>
+         )
 }
