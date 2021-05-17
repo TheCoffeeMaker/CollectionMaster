@@ -20,7 +20,7 @@
 
 **Start**:
 
-1. Inside `backend` folder run `npm run dev` command. This will start the NodeJS develop locally for development.
+1. Inside `backend` folder run `npm run dev` command. This will start the NodeJS server locally for development.
 2. Inside `frontend` folder run `npm start` command. This will start the React user interface.
 
 **Notes**
