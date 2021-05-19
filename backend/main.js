@@ -3,12 +3,14 @@ const bodyParser = require("body-parser");
 const cors = require('cors');
 const app = express();
 const GenericController = require("./Router");
-const port = 4000;
+const port = process.env.PORT || 4000;
+const DBUSERNAME = process.env.DBUSERNAME || 'root';
+const DBPASSWORD = process.env.DBPASSWORD || 'root';
 
 function get_models() {
   const Sequelize = require("sequelize");
   const initModels = require("./models/init-models").initModels;
-  const sequelize = new Sequelize("northwind", "root", "root", {
+  const sequelize = new Sequelize("northwind", DBUSERNAME, DBPASSWORD, {
     dialect: "mysql",
   });
   const models = initModels(sequelize);
@@ -25,6 +27,7 @@ app.use("/invoices", GenericController(invoices));
 app.use("/orders", GenericController(orders));
 app.use("/products", GenericController(products));
 app.use("/suppliers", GenericController(suppliers));
+
 
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);

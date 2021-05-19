@@ -20,6 +20,7 @@ import './index.scss';
 
 export function MainContainer() {
 
+
   // TO DO: fix the searching functionality after moving of the header
   const [searchText, setSearchText] = useState("");
   return (

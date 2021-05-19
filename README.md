@@ -11,9 +11,16 @@
 3. Inside `backend` folder, run `npm install` command.
 4. Inside `frontend` folder run `npm install` command.
 
+**Configuration**
+
+1. Inside `backend` folder create a folder named `cofig`
+2. Inside `config` folder create a file named `dev.env`
+3. Inside the `dev.env` file set values for env variables used in BE server: PORT=, DBUSERNAME=, DBPASSWORD=
+4. Inside `.gitignore` add the `config/` line so that the secret variables are not commites by mistake
+
 **Start**:
 
-1. Inside `backend` folder run `npm start` command. This will start the NodeJS server.
+1. Inside `backend` folder run `npm run dev` command. This will start the NodeJS server locally for development.
 2. Inside `frontend` folder run `npm start` command. This will start the React user interface.
 
 **Notes**
