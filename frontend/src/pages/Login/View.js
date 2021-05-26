@@ -17,8 +17,6 @@ export const View = () => {
             <div className="container">
                 <div className="login-container">
                     <h3>Get Started</h3>
-                    <h3>Domain served from cmd:</h3>
-                    <h4>{process.env.REACT_APP_API_DEV_DOMAIN}</h4>
                     <div>
                         <TextField 
                         label="Email" 
