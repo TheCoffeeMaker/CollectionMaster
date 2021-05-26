@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Row } from "./Row";
 import {
   Table,
@@ -10,12 +9,14 @@ import {
   Box,
 } from "@material-ui/core";
 
+import { getEmployess } from '../../api/EmployeesApi';
+
 export function View(props) {
   const [employees, setEmployees] = useState([]);
   const [selectedRowIndex, setSelectedRowIndex] = useState(0);
 
   useEffect(() => {
-    axios.get("/employees").then((emp) => {
+    getEmployess().then((emp) => {
       setEmployees(emp.data);
     });
   }, []);

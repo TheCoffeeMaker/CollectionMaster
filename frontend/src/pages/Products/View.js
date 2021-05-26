@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Row } from "./Row";
 import {
   Table,
@@ -9,12 +8,13 @@ import {
   TableCell,
   Box,
 } from "@material-ui/core";
+import { getProducts } from '../../api/ProductsApi';
 
 export function View(props) {
   const [products, setProducts] = useState([]);
   const [selectedRowIndex, setSelectedRowIndex] = useState(0);
   useEffect(() => {
-    axios.get("/products").then((prod) => {
+    getProducts().then((prod) => {
       setProducts(prod.data);
     });
   }, []);
