@@ -65,3 +65,8 @@ REACT_APP_API_URL=localhost:4000 npm start
 
 **for production/staging**
 REACT_APP_API_URL=localhost:4000 npm run build
+
+
+**Test**
+
+it works
