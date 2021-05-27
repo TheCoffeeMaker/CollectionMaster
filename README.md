@@ -60,8 +60,8 @@ Work in progress - documenting for now.
 **Commands for starting the FE DOCKER container using custom domain set from CMD**
 
 **local for using DOCKER**
-REACT_APP_API_URL=localhost:5000 npm start
+REACT_APP_API_URL=localhost:4000 npm start
 
 
 **for production/staging**
-REACT_APP_API_URL=localhost:5000 npm run build
+REACT_APP_API_URL=localhost:4000 npm run build
