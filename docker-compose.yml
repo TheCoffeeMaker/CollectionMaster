@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  frontend:
+    image: northwind-fe:latest
+    build:
+      ./frontend
+    ports:
+      - 80:80
+    environment:
+      REACT_APP_API_URL: "backend:4000"
+    depends_on:
+      - backend
+  backend:
+    image: northwind-be:latest
+    build: ./backend
+    environment:
+      DB_HOST: db
+      DB_NAME: northwind
+      DB_USER: root
+      DB_PASS: root
+      DB_ENGINE: mysql
+    ports:
+      - 4000:4000
+    depends_on:
+      - db
+  db:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: northwind
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./create_and_populate_database.sql:/docker-entrypoint-initdb.d/create_and_populate_database.sql:ro
