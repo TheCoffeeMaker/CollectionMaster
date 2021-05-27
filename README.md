@@ -53,3 +53,11 @@ Work in progress - documenting for now.
 6. config - react env variables for development and production
 7. Layout - home of the main router
 8. img - images folder - added when necesary
+
+
+
+
+**Commands for starting the FE DOCKER container using custom domain set from CMD**
+
+REACT_APP_API_DEV_DOMAIN=http://localhost:5000 npm start
+REACT_APP_API_PROD_DOMAIN=http://localhost:5000 npm run build

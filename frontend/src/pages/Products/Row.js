@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import { saveProduct } from '../../api/ProductsApi';
 import { Edit } from "../Common/Edit";
 import { TableRow, TableCell } from "@material-ui/core";

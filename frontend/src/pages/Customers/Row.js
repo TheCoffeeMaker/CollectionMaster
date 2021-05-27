@@ -1,10 +1,10 @@
-import axios from "axios";
 import { Edit } from "../Common/Edit";
 import { useState } from "react";
 import { TableCell, TableRow } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import CancelIcon from "@material-ui/icons/Cancel";
 import SaveIcon from "@material-ui/icons/Save";
+import { saveCustomer } from '../../api/CustomersApi';
 
 export function Row(props) {
   const [isEditMode, setEditMode] = useState(false);
@@ -15,18 +15,19 @@ export function Row(props) {
   }
 
   function save(customer) {
-    axios
-      .put(`/customers/${customer.id}`, {
-        changes: {
-          first_name: customer.first_name,
-          last_name: customer.last_name,
-          company: customer.company,
-        },
-      })
-      .then((cust) => {
-        console.log(cust.data);
-        setEditMode(!isEditMode);
-      });
+    const data = {
+      changes: {
+        first_name: customer.first_name,
+        last_name: customer.last_name,
+        company: customer.company,
+      }
+    };
+
+    saveCustomer(customer.id, data).then((cust) => {
+      console.log(cust.data);
+      setEditMode(!isEditMode);
+    });
+
   }
 
   function onClick() {

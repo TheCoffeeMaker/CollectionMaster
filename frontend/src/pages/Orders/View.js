@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Row } from "./Row";
 import {
   Table,
@@ -10,6 +9,9 @@ import {
   Box,
 } from "@material-ui/core";
 import { useStyle } from "../Common/CssStyles";
+import { getOrders } from '../../api/OrdersApi';
+import { getCustomer } from '../../api/CustomersApi';
+import { getEmployee } from '../../api/EmployeesApi';
 
 export function View(props) {
   const classes = useStyle();
@@ -20,7 +22,7 @@ export function View(props) {
   const [selectedRowIndex, setSelectedRowIndex] = useState(0);
 
   useEffect(() => {
-    axios.get("/orders").then((ord) => {
+    getOrders().then((ord) => {
       setOrders(ord.data);
     });
   }, []);
@@ -28,7 +30,7 @@ export function View(props) {
     if (orders.length) {
       let getCustomerPerOrder = Promise.all(
         orders.map((order) =>
-          axios.get(`/customers/${order.customer_id}`).then((cust) => cust.data)
+        getCustomer(order.customer_id).then((cust) => cust.data)
         )
       );
       getCustomerPerOrder.then((customerList) =>
@@ -37,7 +39,7 @@ export function View(props) {
 
       let getEmployeePerOrder = Promise.all(
         orders.map((order) =>
-          axios.get(`/employees/${order.employee_id}`).then((empl) => empl.data)
+        getEmployee(order.employee_id).then((empl) => empl.data)
         )
       );
       getEmployeePerOrder.then((employeeList) =>

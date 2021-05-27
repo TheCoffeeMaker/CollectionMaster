@@ -11,7 +11,7 @@ export const View = () => {
         localStorage.setItem('loggedIn', 'true');
         history.push("/customers");
     }
-
+    
     return (
         <div className="login-page">
             <div className="container">
