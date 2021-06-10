@@ -4,7 +4,7 @@ import {
   Switch,
 } from "react-router-dom";
 import PageRoute from '../templates/PageRoute';
-import ProtectedPageRoute from '../templates/ProtectedPageRoute';
+import ProtectedDashboard from '../templates/ProtectedDashboard';
 
 import { View as ViewLogin } from '../pages/Login/View';
 import { View as ViewCustomers } from "../pages/Customers/View";
@@ -29,24 +29,24 @@ export function MainContainer() {
         <PageRoute path="/" exact={true}>
           <ViewLogin/>
         </PageRoute>
-        <ProtectedPageRoute path="/customers">
+        <ProtectedDashboard path="/customers">
           <ViewCustomers searchText={searchText} />
-        </ProtectedPageRoute>
-        <ProtectedPageRoute path="/employees">
+        </ProtectedDashboard>
+        <ProtectedDashboard path="/employees">
           <ViewEmployees searchText={searchText} />
-        </ProtectedPageRoute>
-        <ProtectedPageRoute path="/products">
+        </ProtectedDashboard>
+        <ProtectedDashboard path="/products">
           <ViewProducts searchText={searchText} />
-        </ProtectedPageRoute>
-        <ProtectedPageRoute path="/invoices">
+        </ProtectedDashboard>
+        <ProtectedDashboard path="/invoices">
           <ViewInvoices searchText={searchText} />
-        </ProtectedPageRoute>
-        <ProtectedPageRoute path="/orders">
+        </ProtectedDashboard>
+        <ProtectedDashboard path="/orders">
           <ViewOrders searchText={searchText} />
-        </ProtectedPageRoute>
-        <ProtectedPageRoute path="/suppliers">
+        </ProtectedDashboard>
+        <ProtectedDashboard path="/suppliers">
           <ViewSuppliers searchText={searchText} />
-        </ProtectedPageRoute>
+        </ProtectedDashboard>
       </Switch>
     </Router>
   );
