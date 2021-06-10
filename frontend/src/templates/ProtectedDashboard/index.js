@@ -11,15 +11,18 @@ const ProtectedDashboard = (props) => {
     const isUserLoggedIn = localStorage.getItem('loggedIn');
     if(isUserLoggedIn) {
     return( 
-       <div className="dashboard">
-           <div className="sidebar">
-                <Sidebar />
-            </div>
-            <div className="content">
-                <Route {...rest} render={(props) => <Component {...props} />} />
+        <React.Fragment>
+        <Header/>
+        <div className="dashboard">
+            <div className="sidebar">
+                    <Sidebar />
+                </div>
+                <div className="content">
+                    <Route {...rest} render={(props) => <Component {...props} />} />
+                </div>
             </div>
             <Footer />
-        </div>
+        </React.Fragment>
         )
     }
     return <Redirect to="/"/>

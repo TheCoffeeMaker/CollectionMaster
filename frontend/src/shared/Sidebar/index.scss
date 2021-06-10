@@ -1,5 +1,6 @@
 .sidebar-component {
     width: 100%;
+    margin-top: 50px;
     a {
         display: block;
         background: white;
@@ -14,8 +15,13 @@
         background: white;
         transition: all 0.2s ease-in;
         &:hover {
-            background: #bdc3c7;
-            color: black;
+            background: #9FA3FF;
+            color: white;
+        }
+
+        &.active {
+            background: #9FA3FF;
+            color: white;
         }
     }   
 }

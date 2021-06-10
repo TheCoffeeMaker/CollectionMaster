@@ -1,89 +1,55 @@
-import React from 'react';
-import { AppBar, makeStyles, Toolbar, Typography } from "@material-ui/core";
-import {
-  NavLink,
-} from "react-router-dom";
+import React, { useState } from 'react';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import { useHistory } from "react-router-dom";
 
-const useStyles = makeStyles(() => ({
-    appBarText: {
-      flexGrow: 1,
-      color: "#ffffff",
-      textDecoration: "none",
-    },
-  }));
+import profilePhoto from '../../resources/alex.jpg';
+import './index.scss';
 
+const menuStatuses = {
+    OPEN:'open',
+    CLOSED:'closed'
+};
 
 const Header = () => {
-    const classes = useStyles();
+
+    const [menuStatus, setMenuStatus] = useState(menuStatuses.CLOSED);
+    const history = useHistory();
+
+    const openMenu = () => {
+        setMenuStatus(menuStatuses.OPEN);
+    }
+
+    const closeMenu = () =>  {
+        setMenuStatus(menuStatuses.CLOSED);
+    }
 
     const handleLogOut = () => {
       localStorage.removeItem('loggedIn');
+      history.push('/');
     }
 
     return (
-        <AppBar position="static">
-        <Toolbar>
-          <Typography
-            variant="h6"
-            className={classes.appBarText}
-            component={NavLink}
-            to="/"
-            onClick={handleLogOut}
-          >
-            Log Out
-          </Typography>
-          <Typography
-            variant="h6"
-            className={classes.appBarText}
-            component={NavLink}
-            to="/customers"
-          >
-            Customers List
-          </Typography>
-          <Typography
-            variant="h6"
-            className={classes.appBarText}
-            component={NavLink}
-            to="/employees"
-          >
-            Employees List
-          </Typography>
-          <Typography
-            variant="h6"
-            className={classes.appBarText}
-            component={NavLink}
-            to="/products"
-          >
-            Products
-          </Typography>
-          <Typography
-            variant="h6"
-            className={classes.appBarText}
-            component={NavLink}
-            to="/invoices"
-          >
-            Invoices
-          </Typography>
-          <Typography
-            variant="h6"
-            className={classes.appBarText}
-            component={NavLink}
-            to="/orders"
-          >
-            Orders
-          </Typography>
-          <Typography
-            variant="h6"
-            className={classes.appBarText}
-            component={NavLink}
-            to="/suppliers"
-          >
-            Suppliers
-          </Typography>
-          {/** This should be passed trough props and handled outside - for now it will be inactive */}
-          {/* <Search onChange={(searchText) => setSearchText(searchText)} />  */}
-        </Toolbar>
-      </AppBar>
+        <div className="app-header">
+            <div className="profile-menu">
+                <div className="profile-picture">
+                    <div className="image-container" onClick={openMenu}>
+                        <img src={profilePhoto} alt='Profile Picture'/>
+                    </div>
+                    {menuStatus === menuStatuses.OPEN ?
+                        <ClickAwayListener onClickAway={closeMenu}>
+                            <div className="menu">
+                                <div className="menu-item">View Profile</div>
+                                <div className="menu-item">Settings</div>
+                                <div className="menu-item" onClick={handleLogOut}>Log Out</div>
+                            </div>
+                        </ClickAwayListener> : null }
+                </div>
+                <div className="profile-menu-wrapper-info">
+                    <div>Nicolae Alexandru</div>
+                    <div>Super Admin</div>
+                </div>
+            </div>
+        </div>
     );
 }
 
