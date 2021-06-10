@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { useHistory } from "react-router-dom";
+import { SearchContext } from '../../Layout/MainContainer';
 
 import profilePhoto from '../../resources/alex.jpg';
 import './index.scss';
@@ -11,6 +12,8 @@ const menuStatuses = {
 };
 
 const Header = () => {
+
+    const contextType = SearchContext;
 
     const [menuStatus, setMenuStatus] = useState(menuStatuses.CLOSED);
     const history = useHistory();
@@ -28,28 +31,33 @@ const Header = () => {
       history.push('/');
     }
 
+
     return (
-        <div className="app-header">
-            <div className="profile-menu">
-                <div className="profile-picture">
-                    <div className="image-container" onClick={openMenu}>
-                        <img src={profilePhoto} alt='Profile Picture'/>
+        <SearchContext.Consumer>{
+            context => (
+            <div className="app-header">
+                <input type="text" onChange={(e) => {context.setSearchText(e.target.value)}}/>
+                <div className="profile-menu">
+                    <div className="profile-picture">
+                        <div className="image-container" onClick={openMenu}>
+                            <img src={profilePhoto} alt='Profile Picture'/>
+                        </div>
+                        {menuStatus === menuStatuses.OPEN ?
+                            <ClickAwayListener onClickAway={closeMenu}>
+                                <div className="menu">
+                                    <div className="menu-item">View Profile</div>
+                                    <div className="menu-item">Settings</div>
+                                    <div className="menu-item" onClick={handleLogOut}>Log Out</div>
+                                </div>
+                            </ClickAwayListener> : null }
                     </div>
-                    {menuStatus === menuStatuses.OPEN ?
-                        <ClickAwayListener onClickAway={closeMenu}>
-                            <div className="menu">
-                                <div className="menu-item">View Profile</div>
-                                <div className="menu-item">Settings</div>
-                                <div className="menu-item" onClick={handleLogOut}>Log Out</div>
-                            </div>
-                        </ClickAwayListener> : null }
+                    <div className="profile-menu-wrapper-info">
+                        <div>Nicolae Alexandru</div>
+                        <div>Super Admin</div>
+                    </div>
                 </div>
-                <div className="profile-menu-wrapper-info">
-                    <div>Nicolae Alexandru</div>
-                    <div>Super Admin</div>
-                </div>
-            </div>
-        </div>
+            </div>)}
+        </SearchContext.Consumer>
     );
 }
 

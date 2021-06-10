@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {createContext, useState} from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,13 +17,17 @@ import { View as ViewSuppliers } from "../pages/Suppliers/View";
 import './index.scss';
 
 
+export const SearchContext = createContext("");
 
 export function MainContainer() {
 
 
   // TO DO: fix the searching functionality after moving of the header
   const [searchText, setSearchText] = useState("");
+
+
   return (
+    <SearchContext.Provider value={{setSearchText}}>
     <Router>
       <Switch>
         <PageRoute path="/" exact={true}>
@@ -49,5 +53,6 @@ export function MainContainer() {
         </ProtectedDashboard>
       </Switch>
     </Router>
+    </SearchContext.Provider>
   );
 }
