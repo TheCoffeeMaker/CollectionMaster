@@ -1,10 +1,8 @@
 import React, { useState} from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { useHistory } from "react-router-dom";
-import { SearchContext } from '../../Layout/MainContainer';
-import Search from '../../Components/Search';
-
 import profilePhoto from '../../resources/alex.jpg';
+import logo from '../../resources/logo.png';
 import './index.scss';
 
 const menuStatuses = {
@@ -33,6 +31,9 @@ const Header = () => {
 
     return (
             <div className="app-header">
+                <div className="login-container">
+                    <img src={logo} alt="TheCoffeeMaker Logo"/>
+                </div>
                 <div className="profile-menu">
                     <div className="profile-picture">
                         <div className="image-container" onClick={openMenu}>

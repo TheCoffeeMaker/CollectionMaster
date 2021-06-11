@@ -1,7 +1,9 @@
 import React from 'react';
 import { Button, TextField } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
+import logo from '../../resources/logo.png';
 import './index.scss';
+
 
 
 export const View = () => {
@@ -35,7 +37,7 @@ export const View = () => {
                     </div>
                 </div>
                 <div className="login-info">
-            
+                    <img src={logo} alt="TheCoffeeMaker Logo"/>
                 </div>
             </div>
          </div>

@@ -4,6 +4,17 @@
     color: white;
     position: relative;
 
+    .login-container {
+        position: absolute;
+        top:0;
+        left: 115px;
+        bottom: 0;
+        width: 80px;
+        img {
+            width: 100%;
+        }
+    }
+
     .profile-menu {
         display: flex;
         position: absolute;
