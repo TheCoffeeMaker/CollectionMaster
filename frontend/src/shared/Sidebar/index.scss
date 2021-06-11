@@ -1,6 +1,22 @@
 .sidebar-component {
     width: 100%;
     margin-top: 50px;
+
+    .search-container {
+        display: block;
+        background: white;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        margin: 10px auto;
+        width: 90%;
+        text-decoration: none;
+        border-radius: 5px;
+        color: #2c3e50;
+        background: white;
+        transition: all 0.2s ease-in;
+    }
+
     a {
         display: block;
         background: white;

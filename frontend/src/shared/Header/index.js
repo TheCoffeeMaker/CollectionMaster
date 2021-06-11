@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { useHistory } from "react-router-dom";
 import { SearchContext } from '../../Layout/MainContainer';
+import Search from '../../Components/Search';
 
 import profilePhoto from '../../resources/alex.jpg';
 import './index.scss';
@@ -12,8 +13,6 @@ const menuStatuses = {
 };
 
 const Header = () => {
-
-    const contextType = SearchContext;
 
     const [menuStatus, setMenuStatus] = useState(menuStatuses.CLOSED);
     const history = useHistory();
@@ -33,10 +32,7 @@ const Header = () => {
 
 
     return (
-        <SearchContext.Consumer>{
-            context => (
             <div className="app-header">
-                <input type="text" onChange={(e) => {context.setSearchText(e.target.value)}}/>
                 <div className="profile-menu">
                     <div className="profile-picture">
                         <div className="image-container" onClick={openMenu}>
@@ -56,8 +52,7 @@ const Header = () => {
                         <div>Super Admin</div>
                     </div>
                 </div>
-            </div>)}
-        </SearchContext.Consumer>
+            </div>
     );
 }
 
