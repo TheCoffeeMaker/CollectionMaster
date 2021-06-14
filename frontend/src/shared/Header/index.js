@@ -28,6 +28,10 @@ const Header = () => {
       history.push('/');
     }
 
+    const handleLanguageChange = (e) => {
+        console.log('Asta e ceea ce avem aici');
+        console.log(e.target.value);
+    }
 
     return (
             <div className="app-header">
@@ -35,9 +39,17 @@ const Header = () => {
                     <img src={logo} alt="TheCoffeeMaker Logo"/>
                 </div>
                 <div className="profile-menu">
+                        <div className="language-selector">
+                            <select onChange={handleLanguageChange}>
+                                <option>EN</option>
+                                <option>RO</option>
+                                <option>DE</option>
+                                <option>HU</option>
+                            </select>
+                        </div>
                     <div className="profile-picture">
                         <div className="image-container" onClick={openMenu}>
-                            <img src={profilePhoto} alt='Profile Picture'/>
+                            <img src={profilePhoto} alt='Profile'/>
                         </div>
                         {menuStatus === menuStatuses.OPEN ?
                             <ClickAwayListener onClickAway={closeMenu}>

@@ -21,8 +21,18 @@
         top: 50%;
         right: 20px;
         transform: translateY(-50%);
+
+        .language-selector {
+            display: flex;
+            font-size: 12px;
+            margin-right: 20px;
+            height: 30px;
+            padding-top: 10px;
+        }
+
         .profile-picture {
             margin-right: 10px;
+            position: relative;
             .image-container {
                 width: 50px;
                 height: 50px;
@@ -36,8 +46,8 @@
             }
             .menu {
                 position: absolute;
-                top: 50px;
-                left: -35%;
+                top: 0px;
+                left: -55px;
                 background: white;
                 color: black;
                 top: 60px;
