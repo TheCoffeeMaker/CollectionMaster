@@ -1,10 +1,14 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 import Search from '../../Components/Search';
+import { useTranslation  } from 'react-i18next';
 import { SearchContext } from '../../Layout/MainContainer';
 import './index.scss';
 
 const Sidebar = () => {
+
+    const { t } = useTranslation()
+
     return (
         <SearchContext.Consumer>
             {context =>
@@ -12,12 +16,12 @@ const Sidebar = () => {
                     <div className='search-container'>
                         <Search type="text" onChange={(text) => {context.setSearchText(text)}}/>
                     </div>
-                    <NavLink to='/customers'>Customers</NavLink>
-                    <NavLink to='/employees'>Empoyeees</NavLink>
-                    <NavLink to='/products'>Products</NavLink>
-                    <NavLink to='/invoices'>Invoices</NavLink>
-                    <NavLink to='/orders'>Orders</NavLink>
-                    <NavLink to='/suppliers'>Suppliers</NavLink>
+                    <NavLink to='/customers'>{t("customers")}</NavLink>
+                    <NavLink to='/employees'>{t("employees")}</NavLink>
+                    <NavLink to='/products'>{t("products")}</NavLink>
+                    <NavLink to='/invoices'>{t("invoices")}</NavLink>
+                    <NavLink to='/orders'>{t("orders")}</NavLink>
+                    <NavLink to='/suppliers'>{t("suppliers")}</NavLink>
             </div>}
         </SearchContext.Consumer>
     );

@@ -1,6 +1,7 @@
 import React, { useState} from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { useHistory } from "react-router-dom";
+import { useTranslation  } from 'react-i18next';
 import profilePhoto from '../../resources/alex.jpg';
 import logo from '../../resources/logo.png';
 import './index.scss';
@@ -11,9 +12,10 @@ const menuStatuses = {
 };
 
 const Header = () => {
+    const history = useHistory();
+    const { i18n }  = useTranslation();
 
     const [menuStatus, setMenuStatus] = useState(menuStatuses.CLOSED);
-    const history = useHistory();
 
     const openMenu = () => {
         setMenuStatus(menuStatuses.OPEN);
@@ -29,8 +31,7 @@ const Header = () => {
     }
 
     const handleLanguageChange = (e) => {
-        console.log('Asta e ceea ce avem aici');
-        console.log(e.target.value);
+        i18n.changeLanguage(e.target.value)
     }
 
     return (
@@ -44,7 +45,6 @@ const Header = () => {
                                 <option>EN</option>
                                 <option>RO</option>
                                 <option>DE</option>
-                                <option>HU</option>
                             </select>
                         </div>
                     <div className="profile-picture">
