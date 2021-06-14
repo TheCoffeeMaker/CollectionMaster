@@ -13,7 +13,7 @@ const menuStatuses = {
 
 const Header = () => {
     const history = useHistory();
-    const { i18n }  = useTranslation();
+    const { i18n, t }  = useTranslation();
 
     const [menuStatus, setMenuStatus] = useState(menuStatuses.CLOSED);
 
@@ -54,9 +54,9 @@ const Header = () => {
                         {menuStatus === menuStatuses.OPEN ?
                             <ClickAwayListener onClickAway={closeMenu}>
                                 <div className="menu">
-                                    <div className="menu-item">View Profile</div>
-                                    <div className="menu-item">Settings</div>
-                                    <div className="menu-item" onClick={handleLogOut}>Log Out</div>
+                                    <div className="menu-item">{t('viewProfile')}</div>
+                                    <div className="menu-item">{t('settings')}</div>
+                                    <div className="menu-item" onClick={handleLogOut}>{t('logOut')}</div>
                                 </div>
                             </ClickAwayListener> : null }
                     </div>

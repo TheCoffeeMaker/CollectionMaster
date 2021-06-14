@@ -9,9 +9,12 @@ import {
   TableRow,
   Box,
 } from "@material-ui/core";
+import { useTranslation  } from 'react-i18next';
 
 export function View(props) {
   const [suppliers, setSuppliers] = useState([]);
+  const { t } = useTranslation();
+
   useEffect(() => {
     getSuppliers().then((sup) => {
       setSuppliers(sup.data);
@@ -44,13 +47,13 @@ export function View(props) {
             <Box fontWeight="bold">#</Box>
           </TableCell>
           <TableCell>
-            <Box fontWeight="bold">First Name</Box>
+            <Box fontWeight="bold">{t('firstName')}</Box>
           </TableCell>
           <TableCell>
-            <Box fontWeight="bold">Last Name</Box>
+            <Box fontWeight="bold">{t('lastName')}</Box>
           </TableCell>
           <TableCell>
-            <Box fontWeight="bold">Company</Box>
+            <Box fontWeight="bold">{t('company')}</Box>
           </TableCell>
         </TableRow>
       </TableHead>

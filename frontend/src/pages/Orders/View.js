@@ -8,6 +8,7 @@ import {
   TableCell,
   Box,
 } from "@material-ui/core";
+import { useTranslation  } from 'react-i18next';
 import { useStyle } from "../Common/CssStyles";
 import { getOrders } from '../../api/OrdersApi';
 import { getCustomer } from '../../api/CustomersApi';
@@ -20,6 +21,7 @@ export function View(props) {
   const [customerDetails, setCustomerDetails] = useState([]);
   const [employeeDetails, setEmployeeDetails] = useState([]);
   const [selectedRowIndex, setSelectedRowIndex] = useState(0);
+  const { t } =  useTranslation();
 
   useEffect(() => {
     getOrders().then((ord) => {
@@ -103,19 +105,19 @@ export function View(props) {
             <Box fontWeight="bold">#</Box>
           </TableCell>
           <TableCell component="th" scope="col">
-            <Box fontWeight="bold">Ship Name</Box>
+            <Box fontWeight="bold">{t('shipName')}</Box>
           </TableCell>
           <TableCell component="th" scope="col">
-            <Box fontWeight="bold">Ship Address</Box>
+            <Box fontWeight="bold">{t('shipAddress')}</Box>
           </TableCell>
           <TableCell component="th" scope="col">
-            <Box fontWeight="bold">Ship City</Box>
+            <Box fontWeight="bold">{t('shipCity')}</Box>
           </TableCell>
           <TableCell component="th" scope="col">
-            <Box fontWeight="bold">Employee</Box>
+            <Box fontWeight="bold">{t('employee')}</Box>
           </TableCell>
           <TableCell component="th" scope="col">
-            <Box fontWeight="bold">Customer</Box>
+            <Box fontWeight="bold">{t('customer')}</Box>
           </TableCell>
           <TableCell></TableCell>
         </TableRow>

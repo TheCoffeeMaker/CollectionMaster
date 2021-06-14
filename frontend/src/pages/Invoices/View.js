@@ -9,9 +9,13 @@ import {
   TableRow,
   Box,
 } from "@material-ui/core";
+import { useTranslation  } from 'react-i18next';
 
 export function View(props) {
   const [invoices, setInvoices] = useState([]);
+  const { t } = useTranslation();
+
+
   useEffect(() => {
     getInvoices().then((inv) => {
       setInvoices(inv.data);
@@ -43,10 +47,10 @@ export function View(props) {
             <Box fontWeight="bold">#</Box>
           </TableCell>
           <TableCell component="th">
-            <Box fontWeight="bold">Order Id</Box>
+            <Box fontWeight="bold">{t('orderId')}</Box>
           </TableCell>
           <TableCell component="th">
-            <Box fontWeight="bold">Invoice date</Box>
+            <Box fontWeight="bold">{t('invoiceDate')}</Box>
           </TableCell>
         </TableRow>
       </TableHead>

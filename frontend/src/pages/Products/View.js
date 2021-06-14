@@ -8,11 +8,14 @@ import {
   TableCell,
   Box,
 } from "@material-ui/core";
+import { useTranslation  } from 'react-i18next';
 import { getProducts } from '../../api/ProductsApi';
 
 export function View(props) {
   const [products, setProducts] = useState([]);
   const [selectedRowIndex, setSelectedRowIndex] = useState(0);
+  const { t } = useTranslation();
+
   useEffect(() => {
     getProducts().then((prod) => {
       setProducts(prod.data);
@@ -56,13 +59,13 @@ export function View(props) {
             <Box fontWeight="bold">#</Box>
           </TableCell>
           <TableCell component="th" scope="col">
-            <Box fontWeight="bold">Product Code</Box>
+            <Box fontWeight="bold">{t('productCode')}</Box>
           </TableCell>
           <TableCell component="th" scope="col">
-            <Box fontWeight="bold">Product Name</Box>
+            <Box fontWeight="bold">{t('productName')}</Box>
           </TableCell>
           <TableCell component="th" scope="col">
-            <Box fontWeight="bold">Standard Cost</Box>
+            <Box fontWeight="bold">{t('standardCost')}</Box>
           </TableCell>
           <TableCell></TableCell>
         </TableRow>

@@ -23,13 +23,13 @@ export const View = () => {
                     <h3>{t("getstarted")}</h3>
                     <div>
                         <TextField 
-                        label="Email" 
+                        label={t('email')}
                         />
                     </div>    
                     <div>
                     <TextField
                     id="standard-password-input"
-                    label="Password"
+                    label={t('password')}
                     type="password"
                     autoComplete="current-password"
                     />

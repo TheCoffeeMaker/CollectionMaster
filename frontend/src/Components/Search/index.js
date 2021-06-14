@@ -1,7 +1,10 @@
 import SearchIcon from "@material-ui/icons/Search";
+import { useTranslation  } from 'react-i18next';
 import './index.scss';
 
  const Search = (prop) => {
+
+     const { t } = useTranslation();
 
     return (
         <div className="search-component">
@@ -13,7 +16,7 @@ import './index.scss';
                     onChange={(e) => prop.onChange(e.target.value)}
                     id="searchValue"
                     type="search"
-                    placeholder="Search"
+                    placeholder={t("search")}
                     aria-label="Search"
                 />
             </div>

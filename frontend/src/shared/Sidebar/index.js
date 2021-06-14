@@ -7,7 +7,7 @@ import './index.scss';
 
 const Sidebar = () => {
 
-    const { t } = useTranslation()
+    const { t } = useTranslation();
 
     return (
         <SearchContext.Consumer>
