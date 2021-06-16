@@ -9,10 +9,13 @@ import {
   TableCell,
   Box,
 } from "@material-ui/core";
+import { useTranslation  } from 'react-i18next';
+
 
 export function View(props) {
   const [customers, setCustomers] = useState([]);
   const [selectedRowIndex, setSelectedRowIndex] = useState(0);
+  const { t } = useTranslation();
 
   useEffect(() => {
     getCustomers().then((cust) => {
@@ -55,13 +58,13 @@ export function View(props) {
             <Box fontWeight="bold">#</Box>
           </TableCell>
           <TableCell component="th" scope="col">
-            <Box fontWeight="bold">First Name</Box>
+            <Box fontWeight="bold">{t('firstName')}</Box>
           </TableCell>
           <TableCell component="th" scope="col">
-            <Box fontWeight="bold">Last Name</Box>
+            <Box fontWeight="bold">{t('lastName')}</Box>
           </TableCell>
           <TableCell component="th" scope="col">
-            <Box fontWeight="bold">Company</Box>
+            <Box fontWeight="bold">{t('company')}</Box>
           </TableCell>
           <TableCell component="th" scope="col"></TableCell>
         </TableRow>

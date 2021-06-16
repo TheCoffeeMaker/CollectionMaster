@@ -38,5 +38,10 @@
     background: url(../../resources/wind.jpg) center center no-repeat;
     background-size: cover;
     background-color:  #444cf7;
-    background-blend-mode: luminosity;
+    background-blend-mode: screen;
+    position: relative;
+    img {
+        width: 100%;
+    }
 }
+// screen, color-dodge

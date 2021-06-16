@@ -40,7 +40,7 @@ describe('Appointment', () => {
         expect(container.textContent).toMatch('Berceam');
     })
 
-    it('renders the customers phone numner', () => {
+    it('renders the customers phone number', () => {
         customer = {name: 'Alex', lastName: 'Pop', phoneNumber:'1234567'};
         render(<AppointmentView customer={customer}/>)
         expect(container.textContent).toMatch('1234567');

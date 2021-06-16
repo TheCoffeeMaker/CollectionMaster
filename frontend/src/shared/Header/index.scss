@@ -1,0 +1,91 @@
+.app-header {
+    height: 80px;
+    background-color: #9FA3FF;
+    color: white;
+    position: relative;
+
+    .login-container {
+        position: absolute;
+        top:0;
+        left: 115px;
+        bottom: 0;
+        width: 80px;
+        img {
+            width: 100%;
+        }
+    }
+
+    .profile-menu {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+
+        .language-selector {
+            display: flex;
+            font-size: 12px;
+            margin-right: 20px;
+            height: 30px;
+            padding-top: 10px;
+        }
+
+        .profile-picture {
+            margin-right: 10px;
+            position: relative;
+            .image-container {
+                width: 50px;
+                height: 50px;
+                position: relative;
+                border-radius: 50%;
+                overflow: hidden;
+                cursor: pointer;
+                img {
+                    width: 100%;
+                }
+            }
+            .menu {
+                position: absolute;
+                top: 0px;
+                left: -55px;
+                background: white;
+                color: black;
+                top: 60px;
+                width:  150px;
+                text-align: center;
+                border-radius: 3px;
+                padding: 5px;
+                box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+                &:after {
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    position: absolute;
+                    top: -5px;
+                    left: 50%;
+                    transform: translateX(-50%) rotate(45deg);
+                    background: white;
+                }
+
+                .menu-item {
+                    margin: 5px;
+                    font-size: 14px;
+                    color: #34495e;
+                    font-weight: lighter;
+                    cursor: pointer;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        .profile-menu-wrapper-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: lighter;
+            text-align: center;
+        }
+    }
+}
