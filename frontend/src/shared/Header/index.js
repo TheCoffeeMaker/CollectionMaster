@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { useHistory } from "react-router-dom";
 import { useTranslation  } from 'react-i18next';
@@ -41,10 +41,10 @@ const Header = () => {
                 </div>
                 <div className="profile-menu">
                         <div className="language-selector">
-                            <select onChange={handleLanguageChange}>
-                                <option>EN</option>
-                                <option>RO</option>
-                                <option>DE</option>
+                            <select value={localStorage.getItem("i18nextLng")} onChange={handleLanguageChange}>
+                                <option value="en">EN</option>
+                                <option value="ro">RO</option>
+                                <option value="de">DE</option>
                             </select>
                         </div>
                     <div className="profile-picture">
