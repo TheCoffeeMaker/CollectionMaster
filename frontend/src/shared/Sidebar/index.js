@@ -13,9 +13,9 @@ const Sidebar = () => {
         <SearchContext.Consumer>
             {context =>
             <div className='sidebar-component'>
-                    <div className='search-container'>
+                    {/* <div className='search-container'>
                         <Search type="text" onChange={(text) => {context.setSearchText(text)}}/>
-                    </div>
+                    </div> */}
                     <NavLink to='/customers'>{t("customers")}</NavLink>
                     <NavLink to='/employees'>{t("employees")}</NavLink>
                     <NavLink to='/products'>{t("products")}</NavLink>
